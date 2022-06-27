@@ -2,14 +2,19 @@
 
 # Convert markdown to plain text from https://stackoverflow.com/a/54923798
 
-from markdown import Markdown
-from io import StringIO
+import os
 import glob
 import html
-
-
 import markdown # pip install markdown
+
+from markdown import Markdown
+from io import StringIO
 from bs4 import BeautifulSoup # pip install beautifulsoup4
+from dotenv import load_dotenv
+
+load_dotenv()
+SRC = os.environ['SRC']
+DOCS = os.environ['DOCS']
 
 def md_to_text(md):
     html = markdown.markdown(md)
@@ -24,10 +29,10 @@ def example():
 
 def main():
     print('Rendering plain text')
-    for md in glob.glob('src/**/**[!404]*.md', recursive=True):
+    for md in glob.glob(f'{SRC}/**/**[!404]*.md', recursive=True):
         f = open(md, 'r')
         txt = md_to_text(f.read())
-        new_name = md.replace('src', 'docs')
+        new_name = md.replace('src', 'docs')  # assuming name is src -> docs here, need to revisit
         new_name = new_name.replace('md', 'txt')
         print(new_name)
         n = open(new_name, 'w')

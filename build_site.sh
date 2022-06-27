@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
- 
-while inotifywait -r -e close_write -e move -e create src/ static/
-do
-    rm -rf docs/*
-    cp -rf static/* docs/.
 
+source .env
+
+while inotifywait -r -e close_write -e move -e create $SRC $STATIC
+do
+    rm -rf $DOCS/*
+    cp -rf $STATIC/* $DOCS/.
+    echo "$STATIC/* $DOCS/."
+    
     python ./make_index.py
 
     python ./md2html.py
@@ -12,13 +15,13 @@ do
     python ./html2pdf.py
 
     echo "HTML STATS"
-    find ./docs -name "*.html"
-    find ./docs -name "*.html" | wc -l
+    find $DOCS -name "*.html"
+    find $DOCS -name "*.html" | wc -l
     echo "TEXT STATS"
-    find ./docs -name "*.txt"
-    find ./docs -name "*.txt" | wc -l
+    find $DOCS -name "*.txt"
+    find $DOCS -name "*.txt" | wc -l
     echo "PDF STATS"
-    find ./docs -name "*.pdf"
-    find ./docs -name "*.pdf" | wc -l
+    find $DOCS -name "*.pdf"
+    find $DOCS -name "*.pdf" | wc -l
 done
 

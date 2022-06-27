@@ -3,12 +3,15 @@
 # Convert markdown to HTML
 
 import os
-from pathlib import Path
-
 import markdown
 
+from pathlib import Path
 from staticjinja import Site
+from dotenv import load_dotenv
 
+load_dotenv()
+SRC = os.environ['SRC']
+DOCS = os.environ['DOCS']
 markdowner = markdown.Markdown(output_format="html5")
 
 
@@ -26,8 +29,8 @@ def render_site(site, template, **kwargs):
 print('rendering site')
 
 site = Site.make_site(
-    searchpath="src",
-    outpath="docs",
+    searchpath=f"{SRC}",
+    outpath=f"{DOCS}",
     contexts=[(r".*\.md", site_context)],
     rules=[(r".*\.md", render_site)],
 )
