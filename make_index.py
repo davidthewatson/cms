@@ -17,7 +17,8 @@ def main():
         title_chunks = md[pos+1:-3].split('_') or md[:-3]
         title = ' '.join(title_chunks).title()
         print(title)
-        href= f'<li><a href="{md[29:-3].replace("src/", "")}.html">{title}</a></li>'
+        href= f'<li><a href="{md[44:-3].replace("src/", "")}.html">{title}</a></li>'
+        print(href)
         lis.append(href)
     lis.sort()
     ul = ''.join(lis)
