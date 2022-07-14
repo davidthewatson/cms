@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 SRC = os.environ['SRC']
 
+
 def main():
     s = ''
     html = '### essays\n\n'
@@ -17,7 +18,7 @@ def main():
         title_chunks = md[pos+1:-3].split('_') or md[:-3]
         title = ' '.join(title_chunks).title()
         print(title)
-        href= f'<li><a href="{md[44:-3].replace("src/", "")}.html">{title}</a></li>'
+        href = f'<li><a href="{md[44:-3].replace("src/", "")}.html">{title}</a></li>'
         print(href)
         lis.append(href)
     lis.sort()
@@ -26,6 +27,7 @@ def main():
     f = open(f'{SRC}/essays/index.md', 'w')
     f.writelines(html)
     f.close()
+
 
 if __name__ == '__main__':
     main()

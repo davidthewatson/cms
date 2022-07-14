@@ -5,27 +5,23 @@
 import os
 import glob
 import html
-import markdown # pip install markdown
+import markdown
 
 from markdown import Markdown
 from io import StringIO
-from bs4 import BeautifulSoup # pip install beautifulsoup4
+from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
 load_dotenv()
 SRC = os.environ['SRC']
 DOCS = os.environ['DOCS']
 
+
 def md_to_text(md):
     html = markdown.markdown(md)
     soup = BeautifulSoup(html, features='html.parser')
     return soup.get_text()
 
-def example():
-    md = '**A** [B](http://example.com) <!-- C -->'
-    text = md_to_text(md)
-    print(text)
-    # Output: A B
 
 def main():
     print('Rendering plain text')
@@ -37,6 +33,7 @@ def main():
         print(new_name)
         n = open(new_name, 'w')
         n.write(txt)
+
 
 if __name__ == '__main__':
     main()
