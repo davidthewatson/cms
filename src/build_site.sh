@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source .env
+# you should source .env from you siteroot such that it is defined before running this script
+echo $SITEROOT
 
 while inotifywait -r -e close_write -e move -e create $SRC $STATIC
 do
