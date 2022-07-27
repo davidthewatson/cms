@@ -31,7 +31,7 @@ def render_site(site, template, **kwargs):
     site.get_template("_resume_base.html").stream(**kwargs).dump(str(out), encoding="utf-8")
 
 
-print('rendering site')
+print('rendering resume')
 
 site = Site.make_site(
     searchpath=f"{SRC}",

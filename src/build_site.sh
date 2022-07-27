@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+trap ctrl_c INT
+
+function ctrl_c ()
+{
+    echo "Exiting..."
+    python ./resumemd2html.py 
+    exit 2
+}
+
 # you should source .env from you siteroot such that it is defined before running this script
 echo $SITEROOT
 
