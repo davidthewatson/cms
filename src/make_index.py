@@ -11,7 +11,9 @@ SRC = os.environ['SRC']
 
 def main():
     s = ''
-    html = '### essays\n\n'
+    tmpl = open(f'{SRC}/essays/_index.tpl')
+    html = tmpl.readlines()
+    tmpl.close()
     lis = []
     for md in glob.glob(f'{SRC}/**/**[!404|!index]*.md', recursive=True):
         pos = md.rfind('/')
