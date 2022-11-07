@@ -12,8 +12,8 @@ from dotenv import load_dotenv
 load_dotenv()
 srcpath = os.environ['SRC']
 docpath = os.environ['DOCS']
-SRC = f'{srcpath}/cv/dw' 
-DOCS = f'{docpath}/cv/dw'
+SRC = f'{srcpath}/cv/ww' 
+DOCS = f'{docpath}/cv/ww'
 markdowner = markdown.Markdown(output_format="html5")
 
 
