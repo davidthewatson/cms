@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 SRC = os.environ['SRC']
-DIRS = ['writing', 'reading']
+DIRS = ['write', 'read', 'reflect']
 
 def main():
     for DIR in DIRS:    
