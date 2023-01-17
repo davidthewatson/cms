@@ -6,8 +6,8 @@ trap ctrl_c INT
 function ctrl_c ()
 {
     echo "Exiting..."
-    python ./resumemd2html.py 
-    wkhtmltopdf -B 3cm -L 2cm  -R 2cm -T 2cm http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
+#    python ./resumemd2html.py 
+#    wkhtmltopdf -B 2.54cm -L 2.54cm  -R 2.54cm -T 2.54cm http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
     exit 2
 }
 
@@ -22,11 +22,11 @@ do
     
     python ./make_index.py
     python ./md2html.py
-    python ./resumemd2html.py 
+    python ./resumemd2htmldwmax.py
+    python ./resumemd2htmldwmin.py 
     python ./resumemd2htmlww.py
-    wkhtmltopdf -B 3cm -L 2cm -R 2cm -T 2cm http://localhost:8000/cv/ww/index.html $DOCS/cv/ww/index.pdf
-    wkhtmltopdf -B 3cm -L 2cm  -R 2cm -T 2cm http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
-
+    wkhtmltopdf -L 2.54cm  -R 2.54cm -T 2cm http://localhost:8000/cv/dw/max/index.html $DOCS/cv/dw/max/index.pdf
+    wkhtmltopdf -L 2.54cm  -R 2.54cm -T 2cm http://localhost:8000/cv/dw/min/index.html $DOCS/cv/dw/min/index.pdf
     echo "HTML STATS"
     find $DOCS -name "*.html"
     find $DOCS -name "*.html" | wc -l
