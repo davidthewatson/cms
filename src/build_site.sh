@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+/!/usr/bin/env bash
 
 trap ctrl_c INT
 
@@ -28,8 +28,7 @@ do
     wkhtmltopdf -L 2.54cm -R 2.54cm -T 2cm http://localhost:8000/cv/dw/max/index.html $DOCS/cv/dw/max/index.pdf
     wkhtmltopdf -L 2.54cm -R 2.54cm -T 2cm http://localhost:8000/cv/dw/min/index.html $DOCS/cv/dw/min/index.pdf
     wkhtmltopdf http://localhost:8000/cv/ww/index.html $DOCS/cv/ww/index.pdf
-    echo "HTML STATS"
-    find $DOCS -name "*.html"
-    find $DOCS -name "*.html" | wc -l
+    codespell --skip glossary.md $SRC *.md
+    find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > $SRC/proselint.txt 
 done
 
