@@ -22,13 +22,11 @@ do
     
     python ./make_index.py
     python ./md2html.py
-    python ./resumemd2htmldwmax.py
-    python ./resumemd2htmldwmin.py 
+    python ./resumemd2htmldw.py
     python ./resumemd2htmlww.py
-    wkhtmltopdf -L 2.54cm -R 2.54cm -T 2cm http://localhost:8000/cv/dw/max/index.html $DOCS/cv/dw/max/index.pdf
-    wkhtmltopdf -L 2.54cm -R 2.54cm -T 2cm http://localhost:8000/cv/dw/min/index.html $DOCS/cv/dw/min/index.pdf
+    wkhtmltopdf http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
     wkhtmltopdf http://localhost:8000/cv/ww/index.html $DOCS/cv/ww/index.pdf
     codespell --skip glossary.md $SRC *.md
-    find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > $SRC/proselint.txt 
+    find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > /tmp/proselint.txt 
 done
 
