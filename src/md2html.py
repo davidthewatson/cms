@@ -17,7 +17,8 @@ markdowner = markdown.Markdown(output_format="html5")
 
 def site_context(template):
     markdown_content = Path(template.filename).read_text()
-    return {"post_content_html": markdowner.convert(markdown_content)}
+    title = markdown_content.split("\n")[0].strip('# ')
+    return {"post_content_html": markdowner.convert(markdown_content), "title": title}
 
 
 def render_site(site, template, **kwargs):
@@ -35,7 +36,7 @@ site = Site.make_site(
     searchpath=f"{SRC}",
     outpath=f"{DOCS}",
     contexts=[(r".*\.md", site_context)],
-    rules=[(r".*\.md", render_site)],
+    rules=[(r".*\.md", render_site)]
 )
 
 
