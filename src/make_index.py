@@ -11,7 +11,6 @@ DIRS = ['write', 'read', 'reflect']
 
 def main():
     for DIR in DIRS:    
-        s = ''
         tmpl = open(f'{SRC}/{DIR}/_index.tpl')
         html = tmpl.readlines()
         tmpl.close()

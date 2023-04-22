@@ -4,11 +4,8 @@
 
 import os
 import glob
-import html
-import re
 import subprocess
 
-from io import StringIO
 from dotenv import load_dotenv
 
 load_dotenv()

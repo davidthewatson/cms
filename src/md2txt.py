@@ -4,11 +4,8 @@
 
 import os
 import glob
-import html
 import markdown
 
-from markdown import Markdown
-from io import StringIO
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
