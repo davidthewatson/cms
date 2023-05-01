@@ -19,7 +19,11 @@ def site_context(template):
     # assert False
     markdown_content = Path(template.filename).read_text()
     title = 'davidwatson.org: ' + markdown_content.split("\n")[0].strip('# ')
-    return {"post_content_html": markdowner.convert(markdown_content), "title": title}
+    if template.name.split('/')[0].find('.') == -1:
+        category = template.name.split('/')[0] 
+    else:
+        category = ''
+    return {"post_content_html": markdowner.convert(markdown_content), "title": title, "category": category}
 
 
 def render_site(site, template, **kwargs):

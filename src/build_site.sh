@@ -20,7 +20,7 @@ do
     cp -rf $STATIC/* $DOCS/.
     echo "$STATIC/* $DOCS/."
     
-    python ./make_index.py
+    # python ./make_index.py
     python ./md2html.py
     python ./resumemd2htmldw.py
     python ./resumemd2htmlww.py
