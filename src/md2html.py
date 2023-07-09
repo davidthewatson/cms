@@ -4,6 +4,7 @@
 
 import os
 import markdown
+#import datetime 
 
 from pathlib import Path
 from staticjinja import Site
@@ -18,7 +19,7 @@ markdowner = markdown.Markdown(output_format="html5")
 def site_context(template):
     # assert False
     markdown_content = Path(template.filename).read_text()
-    title = 'davidwatson.org: ' + markdown_content.split("\n")[0].strip('# ')
+    title = 'davidwatson.org: reading, writing, and reflecting' + markdown_content.split("\n")[0].strip('# ')
     if template.name.split('/')[0].find('.') == -1:
         category = template.name.split('/')[0] 
     else:
@@ -28,8 +29,8 @@ def site_context(template):
 
 def render_site(site, template, **kwargs):
     # i.e. posts/post1.md -> build/posts/post1.html
+    #date_time = datetime.datetime.fromtimestamp(os.path.gettmtime(site.outpath / Path(template.name).with_suffix(".md"))
     out = site.outpath / Path(template.name).with_suffix(".html")
-    print(out)
     # Compile and stream the result
     os.makedirs(out.parent, exist_ok=True)
     site.get_template("_base.html").stream(**kwargs).dump(str(out), encoding="utf-8")
