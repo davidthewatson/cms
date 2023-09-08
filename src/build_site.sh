@@ -20,13 +20,13 @@ do
     cp -rf $STATIC/* $DOCS/.
     echo "$STATIC/* $DOCS/."
     
-    # python ./make_index.py
+    python ./make_index.py
     python ./md2html.py
     python ./resumemd2htmldw.py
     python ./resumemd2htmlww.py
-    wkhtmltopdf -T 2cm -L 2cm -R 2cm http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
+    wkhtmltopdf -T 2cm -L 3.5cm -R 1cm http://localhost:8000/cv/dw/index.html $DOCS/cv/dw/index.pdf
     wkhtmltopdf http://localhost:8000/cv/ww/index.html $DOCS/cv/ww/index.pdf
-    codespell --skip glossary.md $SRC *.md
+    codespell .$SRC *.md
     find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > /tmp/proselint.txt 
 done
 

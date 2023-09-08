@@ -1,37 +1,26 @@
-#!/usr/bin/env python3
-
 import os
 import glob
 
-from dotenv import load_dotenv
+# Get the input directory
+input_directory = "src"
 
-load_dotenv()
-SRC = os.environ['SRC']
-DIRS = ['.']
+# Get all markdown files in the input directory
+markdown_files = glob.glob(os.path.join(input_directory, "*.md"))
 
-def main():
-    for DIR in DIRS:
-        tmpl = open(f'{SRC}/{DIR}/_index.tpl')
-        html = tmpl.readlines()
-        tmpl.close()
-        for directory in glob.glob(f'{SRC}/{DIR}/**/**', recursive=True):
-            print(directory)
-            if os.path.isdir(directory):
-                lis = []
-                pos = md.rfind('/')
-                title_chunks = md[pos+1:-3].split('_') or md[:-3]
-                title = ' '.join(title_chunks).title()
-                print(title)
-                href = f'<li><a href="{md[44:-3].replace("src/", "")}.html">{title}</a></li>'
-                print(href)
-                lis.append(href)
-                lis.sort()
+# Create the index file
+index_file = open("index.md", "w")
 
-                ul = ''.join(lis)
-                html += f'<ul>{ul}</ul>'
-                f = open(f'{SRC}/{DIR}/{directory}/dir.md', 'w')
-                f.writelines(html)
-                f.close()
+# Write the header to the index file
+index_file.write("# Index\n\n")
 
-if __name__ == '__main__':
-    main()
+# Iterate over all markdown files
+for markdown_file in markdown_files:
+
+    # Get the file name
+    file_name = os.path.basename(markdown_file)
+
+    # Write a link to the file to the index file
+    index_file.write(f"* [{file_name}]({file_name})\n")
+
+# Close the index file
+index_file.close()

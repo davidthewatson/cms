@@ -12,10 +12,10 @@ DIRS = ['.']
 def main():
     for DIR in DIRS:    
         tmpl = open(f'{SRC}/{DIR}/_index.tpl')
-        html = tmpl.readlines()
+        html = '' # tmpl.readlines()
         tmpl.close()
         lis = []
-        for md in sort(glob.glob(f'{SRC}/{DIR}/**/**[!404|!index]*.md', recursive=True)):
+        for md in glob.glob(f'{SRC}/{DIR}/**/**[!404|!index]*.md', recursive=True):
             pos = md.rfind('/')
             title_chunks = md[pos+1:-3].split('_') or md[:-3]
             title = ' '.join(title_chunks).title()
