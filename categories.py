@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 SRC = os.environ['SRC']
-DIRS = ['about', 'collaboration', 'communication', 'contact', 'diabetes', 'people', 'philosophy', 'poetry', 'psychology', 'technology']
+DIRS = ['about', 'reading', 'writing', 'reflecting']
 
 def main():
     for DIR in DIRS:
