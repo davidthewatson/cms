@@ -7,25 +7,33 @@ from dotenv import load_dotenv
 load_dotenv()
 SRC = os.environ['SRC']
 DIRS = ['about', 'reading', 'writing', 'reflecting']
-
+others = DIRS
+others.remove('about')
 def main():
     for DIR in DIRS:
-        title = DIR.title()
-        html = f'### {title}\n\n'
+        html = ''
+        if DIR != 'about':
+            html = f'### '
+            for other in others:
+                if DIR != other:
+                    html += f'[{other}](/{other}/) '
+                else:
+                    html += f'{other} ' 
+            html += '\n\n'
         lis = []
-        for md in sorted(glob.glob(f'{SRC}/{DIR}/**/**[!404|!index|!cat]*.md', recursive=True)):
-            print(md)
+        for md in sorted(glob.glob(f'{SRC}/{DIR}/**/**[!404|!index]*.md', recursive=True)):
             pos = md.rfind('/')
             title_chunks = md[pos+1:-3].split('_') or md[:-3]
             title = ' '.join(title_chunks).title()
             href = f'<li><a href="{md[44:-3].replace("src/", "")}.html">{title}</a></li>'
             lis.append(href)
-        lis.sort()
-        ul = ''.join(lis)
-        html += f'<ul>{ul}</ul>'
-        f = open(f'{SRC}/{DIR}/cat.md', 'w')
-        f.writelines(html)
-        f.close()
+        if DIR != 'about':
+            lis.sort()
+            ul = ''.join(lis)
+            html += f'<ul>{ul}</ul>'
+            f = open(f'{SRC}/{DIR}/index.md', 'w')
+            f.writelines(html)
+            f.close()
 
 
 if __name__ == '__main__':

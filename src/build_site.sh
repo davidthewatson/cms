@@ -9,7 +9,7 @@ do
     cp -rf $STATIC/* $DOCS/.
     echo "$STATIC/* $DOCS/."
     
-    python ./make_index.py
+    python ./categories.py
     python ./md2html.py
     codespell .$SRC *.md
     find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > /tmp/proselint.txt 
