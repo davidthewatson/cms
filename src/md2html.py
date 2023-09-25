@@ -29,7 +29,7 @@ def site_context(template):
 def render_site(site, template, **kwargs):
     # i.e. posts/post1.md -> build/posts/post1.html
     out = site.outpath / Path(template.name).with_suffix(".html")
-    print(out)
+    # print(out)
     # Compile and stream the result
     os.makedirs(out.parent, exist_ok=True)
     site.get_template("_base.html").stream(**kwargs).dump(str(out), encoding="utf-8")

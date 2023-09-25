@@ -20,6 +20,14 @@ def main():
                 else:
                     html += f'{other} ' 
             html += '\n\n'
+            html += '#### '
+            if DIR == 'reading': 
+                html += 'and quoting'
+            if DIR == 'writing':
+                html += 'and publishing'
+            if DIR == 'reflecting':    
+                html += 'by hyperlink or [generation](https://en.wikipedia.org/wiki/Natural_language_generation)'
+            html += '\n\n'
         lis = []
         for md in sorted(glob.glob(f'{SRC}/{DIR}/**/**[!404|!index]*.md', recursive=True)):
             pos = md.rfind('/')
