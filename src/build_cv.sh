@@ -3,7 +3,7 @@
 # you should source .env from you siteroot such that it is defined before running this script
 echo $SITEROOT
 
-while inotifywait -r -e close_write -e move -e create -e delete $SRC $STATIC
+while inotifywait -r -e close_write -e move -e create -e delete $SRCDW $STATIC
 do
 #    rm -rf $DOCS/*
     cp -rf $STATIC/* $DOCS/.
