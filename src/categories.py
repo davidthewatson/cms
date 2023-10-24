@@ -18,7 +18,7 @@ def main():
                 if DIR != other:
                     html += f'[{other}](/{other}/) '
                 else:
-                    html += f'{other} ' 
+                    html += f'{other} '.upper()
             html += '\n\n'
             html += '#### '
             if DIR == 'reading': 
