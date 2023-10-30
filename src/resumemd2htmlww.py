@@ -10,9 +10,9 @@ from staticjinja import Site
 from dotenv import load_dotenv
 
 load_dotenv()
-srcpath = os.environ['SRC']
+srcpath = os.environ['SRCWW']
 docpath = os.environ['DOCS']
-SRC = f'{srcpath}/cv/ww' 
+SRC = f'{srcpath}' 
 DOCS = f'{docpath}/cv/ww'
 markdowner = markdown.Markdown(output_format="html5")
 
