@@ -1,6 +1,7 @@
 #! /bin/bash
 cd src
-. .env
-. .venv/bin/activate
-python -m http.server -d $DOCS > /dev/null 2>&1 &
+source .env
+source .venv/bin/activate
 ./build_site.sh 
+python3.12 -m http.server -d $DOCS > /dev/null 2>&1 
+deactivate
