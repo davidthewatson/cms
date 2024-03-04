@@ -1,5 +1,5 @@
 cd ../cms/src
-sudo dnf install python wkhtmltopdf inotify-tools
+sudo dnf install python inotify-tools
 python -m venv .venv
 source .venv/bin/activate
 # pip install wheel

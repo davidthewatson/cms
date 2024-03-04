@@ -1,5 +1,5 @@
 cd ../cms/src
-sudo pamac install codespell wkhtmltopdf-static inotify-tools
+sudo pamac install codespell inotify-tools
 python -m venv .venv
 source .venv/bin/activate
 pip install wheel

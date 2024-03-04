@@ -1,5 +1,5 @@
 cd ../cms/src
-sudo apt install -y wkhtmltopdf inotify-tools
+sudo apt install -y inotify-tools
 python -m venv .venv
 source .venv/bin/activate
 pip install wheel
