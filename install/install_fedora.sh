@@ -1,5 +1,5 @@
 cd ../cms/src
-sudo dnf install wkhtmltopdf inotify-tools
+sudo dnf install inotify-tools
 
 python -m venv .venv
 source .venv/bin/activate

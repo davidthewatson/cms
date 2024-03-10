@@ -1,11 +1,16 @@
 import os
 import glob
+from dotenv import load_dotenv
+
+load_dotenv()
+SRC = os.environ['SRC']
+DOCS = os.environ['DOCS']
 
 # Get the input directory
-input_directory = "src"
+input_directory = SRC
 
 # Get all markdown files in the input directory
-markdown_files = glob.glob(os.path.join(input_directory, "*.md"))
+markdown_files = glob.glob(os.path.join(input_directory, "**/*.md"))
 
 # Create the index file
 index_file = open("index.md", "w")
