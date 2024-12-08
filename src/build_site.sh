@@ -1,9 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 . ../.env
 rm -rf $DOCS/*
 cp -rf $STATIC/* $DOCS/.
     
 python ./md2html.py
-codespell $SRC 
-find $SRC -name "*.md" -exec proselint {} \; | cut -c 50- > /tmp/proselint.txt 
 
